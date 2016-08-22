@@ -1,0 +1,47 @@
+{
+  "name": "fefas/patterns-implementations",
+  "description": "This package defines container interfaces and implementations.",
+
+  "type": "project",
+  "license": "MIT",
+
+  "keywords": [
+    "fefas",
+    "patterns implementations"
+  ],
+
+  "authors": [
+    {
+      "name": "Felipe Martins",
+      "homepage": "http://fefas.net"
+    }
+  ],
+
+  "support": {
+    "issues": "https://github.com/fefas/study-patterns/issues",
+    "source": "https://github.com/fefas/study-patterns"
+  },
+
+  "require": {
+    "php": ">=7.0"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "Fefas\\Study\\Pattern\\": "src/"
+    }
+  },
+
+  "require-dev": {
+    "phpunit/phpunit": "5.3.*"
+  },
+
+  "autoload-dev": {
+    "psr-4": {
+      "Fefas\\Study\\Pattern\\": [
+        "tests/doubles/",
+        "tests/unit/"
+      ]
+    }
+  }
+}
