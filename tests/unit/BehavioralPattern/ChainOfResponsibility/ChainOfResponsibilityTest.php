@@ -57,7 +57,7 @@ class ChainOfResponsibilityTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      * @expectedException \Exception
-     * @expectedExceptionMessage Could not found handler to the given request
+     * @expectedExceptionMessage Could not find handler to the given request
      */
     public function exceptionOccursWhenGivenAUnhandleableRequest()
     {

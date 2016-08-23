@@ -17,7 +17,7 @@ abstract class RequestHandler
             return $this->successor->handle($request);
         }
 
-        throw new \Exception('Could not found handler to the given request');
+        throw new \Exception('Could not find handler to the given request');
     }
 
     abstract public function handle(Request $request): Response;
