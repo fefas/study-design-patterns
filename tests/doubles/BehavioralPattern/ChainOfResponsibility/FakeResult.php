@@ -2,6 +2,6 @@
 
 namespace Fefas\Study\Pattern\BehavioralPattern\ChainOfResponsibility;
 
-class FakeRequest extends Request
+class FakeResult extends Result
 {
 }

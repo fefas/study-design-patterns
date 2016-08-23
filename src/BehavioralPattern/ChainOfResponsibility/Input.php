@@ -2,7 +2,7 @@
 
 namespace Fefas\Study\Pattern\BehavioralPattern\ChainOfResponsibility;
 
-abstract class Request
+abstract class Input
 {
     const UNHANDLEABLE = -1;
     const HANDLEABLE = 1;

@@ -2,23 +2,23 @@
 
 namespace Fefas\Study\Pattern\BehavioralPattern\ChainOfResponsibility;
 
-abstract class RequestHandler
+abstract class Handler
 {
     private $successor = null;
 
-    public function __construct(RequestHandler $successor = null)
+    public function __construct(Handler $successor = null)
     {
         $this->successor = $successor;
     }
 
-    public function handleUsingSuccessor(Request $request)
+    public function handleUsingSuccessor(Input $input)
     {
         if (null !== $this->successor) {
-            return $this->successor->handle($request);
+            return $this->successor->handle($input);
         }
 
         throw new \Exception('Could not find handler to the given request');
     }
 
-    abstract public function handle(Request $request): Response;
+    abstract public function handle(Input $input): Result;
 }

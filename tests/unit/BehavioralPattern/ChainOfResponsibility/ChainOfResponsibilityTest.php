@@ -8,25 +8,25 @@ class ChainOfResponsibilityTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $fakeRequestHandlerA = new FakeRequestHandlerA();
-        $fakeRequestHandlerB = new FakeRequestHandlerB($fakeRequestHandlerA);
-        $fakeRequestHandlerC = new FakeRequestHandlerC($fakeRequestHandlerB);
+        $fakeHandlerA = new FakeHandlerA();
+        $fakeHandlerB = new FakeHandlerB($fakeHandlerA);
+        $fakeHandlerC = new FakeHandlerC($fakeHandlerB);
 
-        $this->chainOfResponsibility = $fakeRequestHandlerC;
+        $this->chainOfResponsibility = $fakeHandlerC;
     }
 
     /**
      * @test
      */
-    public function anAnswerIsReturnedGivenAHandleableRequest()
+    public function anResultIsReturnedGivenAHandleableInput()
     {
-        $request = new FakeRequest(Request::HANDLEABLE);
+        $input = new FakeInput(Input::HANDLEABLE);
 
-        $response = $this->chainOfResponsibility->handle($request);
+        $result = $this->chainOfResponsibility->handle($input);
 
         $this->assertInstanceOf(
-            'Fefas\Study\Pattern\BehavioralPattern\ChainOfResponsibility\Response',
-            $response
+            'Fefas\Study\Pattern\BehavioralPattern\ChainOfResponsibility\Result',
+            $result
         );
     }
 
@@ -34,23 +34,23 @@ class ChainOfResponsibilityTest extends \PHPUnit_Framework_TestCase
      * @test
      * @dataProvider requestTypesAndExpectedMessages
      */
-    public function specificHandlerIsUsedWhenGivenSpecificRequest(
-        $requestType,
+    public function specificHandlerIsUsedWhenGivenSpecificInput(
+        $inputType,
         $expectedMessage
     ) {
-        $request = new FakeRequest($requestType);
+        $input = new FakeInput($inputType);
 
-        $response = $this->chainOfResponsibility->handle($request);
+        $result = $this->chainOfResponsibility->handle($input);
 
-        $this->assertEquals($expectedMessage, $response->message());
+        $this->assertEquals($expectedMessage, $result->message());
     }
 
     public function requestTypesAndExpectedMessages()
     {
         return [
-            [Request::HANDLEABLE_BY_A, 'Request was handled by A'],
-            [Request::HANDLEABLE_BY_B, 'Request was handled by B'],
-            [Request::HANDLEABLE_BY_C, 'Request was handled by C'],
+            [Input::HANDLEABLE_BY_A, 'Input was handled by A'],
+            [Input::HANDLEABLE_BY_B, 'Input was handled by B'],
+            [Input::HANDLEABLE_BY_C, 'Input was handled by C'],
         ];
     }
 
@@ -59,10 +59,10 @@ class ChainOfResponsibilityTest extends \PHPUnit_Framework_TestCase
      * @expectedException \Exception
      * @expectedExceptionMessage Could not find handler to the given request
      */
-    public function exceptionOccursWhenGivenAUnhandleableRequest()
+    public function exceptionOccursWhenGivenAUnhandleableInput()
     {
-        $request = new FakeRequest(Request::UNHANDLEABLE);
+        $input = new FakeInput(INput::UNHANDLEABLE);
 
-        $this->chainOfResponsibility->handle($request);
+        $this->chainOfResponsibility->handle($input);
     }
 }

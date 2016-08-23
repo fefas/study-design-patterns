@@ -2,6 +2,6 @@
 
 namespace Fefas\Study\Pattern\BehavioralPattern\ChainOfResponsibility;
 
-class FakeResponse extends Response
+class FakeInput extends Input
 {
 }

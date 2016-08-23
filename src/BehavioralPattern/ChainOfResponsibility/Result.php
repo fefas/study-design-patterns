@@ -2,7 +2,7 @@
 
 namespace Fefas\Study\Pattern\BehavioralPattern\ChainOfResponsibility;
 
-class Response
+class Result
 {
     private $message = null;
 
