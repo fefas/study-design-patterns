@@ -18,7 +18,7 @@ class ChainOfResponsibilityTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function anResultIsReturnedGivenAHandleableInput()
+    public function aResultIsReturnedGivenAHandleableInput()
     {
         $input = new FakeInput(Input::HANDLEABLE);
 
@@ -59,7 +59,7 @@ class ChainOfResponsibilityTest extends \PHPUnit_Framework_TestCase
      * @expectedException \Exception
      * @expectedExceptionMessage Could not find handler to the given request
      */
-    public function exceptionOccursWhenGivenAUnhandleableInput()
+    public function exceptionOccursWhenGivenAnUnhandleableInput()
     {
         $input = new FakeInput(INput::UNHANDLEABLE);
 
